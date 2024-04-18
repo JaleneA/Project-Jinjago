@@ -5,51 +5,101 @@
 {{ super() }}
 
 {% block content %}
-    <div class="row">
-        <p>
-            This is table is renderd on the Server. Flask gets the data from the database and uses jinja templates to dyanmically render this page when a request is sent to <a href="/player_history">/player_history</a>.
-        </p>
+<nav class="nav-extended purple" style="margin-bottom:10px">
+  <div class="nav-wrapper">
+    <!--<a href="#" style="font-size=1.5em" class="brand-logo left">Logged in As: {{ user.username }} </a>-->
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </div>
+  <nav>
+    <div class="nav-wrapper purple">
+      <ul>
+        <!-- course navigation here -->
+        {# <!-- {% for course in courses %}
+        <li {% if course.code == selected_course.code %}class="active"{% endif %}>
+          <a href="/app/{{ course.code }}">{{ course.code }}</a>
+        </li>
+        {% endfor %} -->
+        #}
+      </ul>
     </div>
+  </nav>
+</nav>
 
-    <div class="row">
-      <form class="col s12" method="POST" action="/users">
-        
-        <div class="row">
-          <div class="input-field col s6">
-            <input placeholder="Username" name="username" type="text" class="validate">
-            <label for="username">Username</label>
-          </div>
-          <div class="input-field col s6">
-            <input placeholder="password" name="password" type="password" class="validate">
-            <label for="password">Password</label>
-          </div>
-        </div>
-      
-        <div class="row">
-          <div class="input-field col s12">
-            <button class="btn waves-effect waves-light right purple" type="submit" name="action">Submit</button>
+<div class="row" style="position: absolute; height:20px; top:0; z-index:10; width:100vw">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="blue lighten-5 col s10 offset-s1">
+          <div class="row"> 
+              <div class="col s11" style="font-weight: bold;text-align: center">
+                {{ message }}
+              </div>
+              <div class="col s1">
+                <a href="" style="font-size:1.5em" >&times;</a>
+              </div>  
           </div>
         </div> 
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
 
-      </form>
-    </div>
+<div class="row" style="margin: 0; padding:0; margin-top:-10px">
+  <div class="col s12 m9 l8">
+    <h1>Students</h1>
+  </div>
+  <div class="col s12 m3 l4">
+    <!-- show course name here -->
+    {#<!-- <h1>Class List for {{ selected_course.name }}</h1>  -->#}
+  </div>
+</div>
 
-    <div class="row">
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th><th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for user in users %}
-            <tr>
-                <td>{{user.id}}</td>
-                <td>{{user.username}}</td>
-            </tr>
-          {% endfor %}
-        <tbody>
-      </table>
+<div class="row">
+  <section class="col s12 m9 l8" style="overflow-y:scroll; height: 70vh">
+    <!-- show students currently not in course here -->
+    <div class="row" style="width: 100%">
+      {#<!--{% for student in unenrolled_students %}
+      <article class="col s12 m4">
+        <div class="card">
+          <div class="center card-content">
+            <img class="circle responsive-img" src="{{ student.image }}">
+            <ul>
+              <li>
+                <p>{{ student.first_name }} {{ student.last_name }}</p>
+                <p>{{ student.id }}</p>
+                <p>{{ student.programme }}</p>
+              </li>
+            </ul>
+          </div>
+          <div class="card-action center">
+            <a class="waves-effect waves-light btn" href="/enroll/{{ student.id }}/{{ selected_course }}">ENROLL</a>
+          </div>
+        </div>
+      </article>
+      {% endfor %} -->
+      #}
     </div>
+  </section>
+
+  <section class="col s12 m3 l4" style="overflow-y:scroll; height: 70vh">
+    <ul class="collection">
+      {#<!-- show students currently in course here -->
+      <!-- {% for student in enrolled_students %}
+      <li class="collection-item avatar">
+        <img src="{{ student.image }}" alt="" class="circle">
+        <div class="row">
+          <div class="col">
+            <span class="title">{{ student.first_name }} {{ student.last_name }}</span>
+            <p>{{ student.id }}</</p>
+          </div>
+          <a class="right waves-effect waves-light btn" href="/drop_course/{{ student.id }}/{{ selected_course }}">Remove</a>
+        </div>
+      </li>
+      {% endfor %} -->#}
+    </ul>
+  </section>
+</div>
 
 {% endblock %}
