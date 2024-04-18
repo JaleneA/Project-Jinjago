@@ -12,12 +12,12 @@
 
     @font-face {
         font-family: my-font-heading;
-        src: url(/static/custom_fonts/Kamikaze.ttf);
+        src: url(/static/custom_fonts/Japanese.ttf);
     }
     
     @font-face {
         font-family: my-font;
-        src: url(/static/custom_fonts/Japanese.ttf);
+        src: url(/static/custom_fonts/Museo700-Regular.otf);
     }
 
     .how-to-play-container{
@@ -44,8 +44,8 @@
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     }
 
-    .how-to-play h1{
-        margin: 30px 0 30px;
+    .how-to-play h2{
+        margin: 30px 0 20px;
         padding: 5px 0 5px;
         border: 1px solid rgb(164, 163, 159);
         border-radius: 5px;
@@ -74,7 +74,7 @@
     .instructions-column img{
         max-width: 80%; /* Ensure images don't overflow the column */
         display: block; /* Make sure images don't have extra space below */
-        margin: 0 auto 20px; /* Center the image horizontally and add space below */
+        margin: 0 auto 5px; /* Center the image horizontally and add space below */
         border-radius: 10px; /* Rounded border for the image */
     }
 
@@ -86,7 +86,7 @@
     .instructions-column h3{
         font-size: 20px;
         font-family: my-font;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 </style>
 <body>
@@ -94,7 +94,7 @@
         Hello
 
         <div class="how-to-play">
-            <h1>How To Play</h1>
+            <h2>How To Play</h2>
 
             <div class="instructions-container">
                 
@@ -108,8 +108,7 @@
                 <div class="instructions-column">
                     <img src="/static/img/img.jpg" alt="placeholder2">
                     <h3>| 2 |</h3>
-                    <p> Take turns with your opponent guessing the secret number.
-                        Pay attention to the clues - "bulls" mean you've got a digit in the right place, 
+                    <p> Pay attention to the clues - "bulls" mean you've got a digit in the right place, 
                         while "cows" mean you've got the right digit but in the wrong place</p>
                 </div>
 
