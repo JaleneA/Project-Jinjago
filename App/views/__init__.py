@@ -6,7 +6,8 @@ from .auth import auth_views
 from .login import login_views
 from .signup import signup_views
 from .game import game_views
+from .howtoplay import howtoplay_views
 
 
-views = [user_views, index_views, auth_views, login_views, signup_views, game_views] 
+views = [user_views, index_views, auth_views, login_views, signup_views, game_views, howtoplay_views] 
 # blueprints must be added to this list
