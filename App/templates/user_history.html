@@ -7,22 +7,20 @@
 {% block content %}
 <nav class="nav-extended purple" style="margin-bottom:10px">
   <div class="nav-wrapper">
-    <a href="#" style="font-size=1.5em" class="brand-logo left">{{ player.username }}'s Game History</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="/logout">Logout</a></li>
-    </ul>
+    <a href="#" style="font-size: 1.5em" class="brand-logo left">{{ player.username }}'s Game History</a>
   </div>
   <nav>
     <div class="nav-wrapper purple">
-      <ul>
-        <!-- course navigation here -->
-        {# <!-- {% for course in courses %}
-        <li {% if course.code == selected_course.code %}class="active"{% endif %}>
-          <a href="/app/{{ course.code }}">{{ course.code }}</a>
-        </li>
-        {% endfor %} -->
-        #}
-      </ul>
+      <form action="/user_search" method="GET">
+        <ul class="row">
+          <li>
+            <input type="search" name="username" id="username" placeholder="Search username">
+          </li>
+          <li>
+            <input type="submit" value="Search">
+          </li>
+        </div>
+      </form>
     </div>
   </nav>
 </nav>
