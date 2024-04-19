@@ -14,6 +14,12 @@ def user_history(user_id, game_id):
     if not user:
         return render_template("404.html", error=f"user with ID <{user_id}> does not exist")
     
+    if game_id:
+        try:
+            game_id = int(game_id)
+        except ValueError as e:
+            return render_template("400.html", error=f"invalid game ID <{game_id}>")
+    
     user_guesses = UserGuess.query.filter_by(user_id=user.id).all()
     game_ids = {user_guess.game_id for user_guess in user_guesses}
     games = Game.query.filter(Game.id.in_(game_ids)).all()
@@ -22,7 +28,7 @@ def user_history(user_id, game_id):
         {
             "id" : game.id,
             "date" : game.creation_date,
-            "answer" : "[REDACTED]" if date.today == game.creation_date else game.answer,
+            "answer" : "[REDACTED]" if date.today() == game.creation_date else game.answer,
             "answer_length" : game.answer_length,
             "max_attempts" : game.max_attempts,
             "labeled_guesses" : [game.attachLabels(user_guess.guess, game.answer) for user_guess in user_guesses if user_guess.game_id == game.id],
@@ -30,7 +36,6 @@ def user_history(user_id, game_id):
         }
         for game in games
     ]
-    
     selected_game = next((game for game in user_games if game["id"] == game_id), None) if game_id else None
 
     return render_template("user_history.html",
