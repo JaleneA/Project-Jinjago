@@ -2,9 +2,15 @@ from App.models import User
 from App.database import db
 
 def create_user(username, password):
+    # To Handle Username Needing To Be Unique
+    existing_user = User.query.filter_by(username=username).first()
+    if existing_user:
+        return None
+
     newuser = User(username=username, password=password)
     db.session.add(newuser)
     db.session.commit()
+
     return newuser
 
 def get_user_by_username(username):
