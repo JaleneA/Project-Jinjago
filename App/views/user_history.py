@@ -15,7 +15,7 @@ def user_history(user_id, game_id):
         return render_template("404.html", error=f"user with ID <{user_id}> does not exist")
     
     guesses = UserGuess.query.filter_by(user_id=user.id).all()
-    game_ids = {i.game_id for id in guesses}
+    game_ids = {guess.game_id for guess in guesses}
     games = Game.query.filter(Game.id.in_(game_ids)).all()
     
     user_games = [
