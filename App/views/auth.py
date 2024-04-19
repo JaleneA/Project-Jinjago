@@ -52,7 +52,7 @@ def logout_action():
 def signup_action():
     data = request.form
     user = create_user(data['username'], data['password'])
-    response = redirect(url_for('login_views.login_page'))
+    response = redirect(url_for('index_views.login_page'))
     if not user:
         flash('Problem Creating New Account'), 401
     else:
