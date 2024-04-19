@@ -69,7 +69,7 @@
             <td>{{ game.answer_length }}</td>
             <td>{{ game.max_attempts }}</td>
             <td>{{ game.num_guesses }}</td>
-            <td><a href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}">View Details</a></td>
+            <td><a class="waves-effect waves-light btn" href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}">View Details</a></td>
           </tr>
           {% endfor %}
         </tbody>
