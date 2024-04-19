@@ -28,6 +28,11 @@
         margin: 0;
         background-color: white;
         display: flex; /* Important */
+        background-image: url('/static/img/main.png');
+        backdrop-filter: blur(10px); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* This keeps the background fixed while scrolling */
     }
 
     .how-to-play {
@@ -35,20 +40,20 @@
         background: #262627;
         border-radius: 3px;
         text-align: center;
-        padding: 20px 20px;
+        padding: 10px 10px 10px 10px;
         color: #333;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-        margin: auto; /* Important */
+        margin-top: 5px !important; /* Important */
+        margin: auto;
     }
 
 
-    .how-to-play .card {
+    .how-to-play h1 {
         border: 1px solid rgb(164, 163, 159);
         border-radius: 5px;
         background-color: #9e2a34;
         color: rgb(189, 182, 154);
         font-family: my-font-heading;
-        
     }
 
     .instructions-container{
@@ -89,11 +94,8 @@
 </style>
 <body>
     <div class="how-to-play-container">
-
         <div class="how-to-play">
-            <div class="card">
                 <h1>How To Play</h1>
-            </div>
             <div class="instructions-container">
                 
                 <div class="instructions-column">
@@ -116,6 +118,9 @@
                     <p> With each guess, use the feedback to refine your strategy and get 
                         closer to victory. Keep guessing and analyzing until you've cracked the code!</p>
                 </div>
+            </div>
+            <div style="font-family: my-font;">
+                <a href="/" style="color: rgb(189, 182, 154); font-size: 1.1em;">Back To Main Screen</a>
             </div>
         </div>
     </div>    
