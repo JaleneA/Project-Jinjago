@@ -13,7 +13,6 @@ game_views = Blueprint('game_views', __name__, template_folder='../templates')
 @game_views.route('/game', methods=['GET'])
 @jwt_required()
 def game():
-    current_user = jwt_current_user.username
     today = datetime.utcnow().date()
     curr_game = get_curr_game()
 
@@ -23,12 +22,6 @@ def game():
     guesses = UserGuess.get_guesses(curr_game.id, jwt_current_user.id)
     curr_game_json = curr_game.get_json()
 
-    # Please don't mind my whompy logic, I aint smart okii
-    if guesses:
-        attempts_left = curr_game.max_attempts - len(guesses)
-    else:
-        attempts_left = curr_game.max_attempts
-
     # Evaluate the last guess to get the guess results
     prev_guess = guesses[-1].guess if guesses else None
     verdict = curr_game.evaluateGuess(prev_guess) if prev_guess else None
@@ -36,9 +29,7 @@ def game():
     # Checking if the player has achieved victory!
     victory = None
     if verdict and verdict['bulls'] == 4:
-        victory = "Congratulations! You Did It!"
-    elif (attempts_left == 0):
-        victory = "You Lose!"
+        victory = "Congratulations! You Have Cracked The Code, Way To Go!"
 
     # Attaching labels to each digit in the guesses
     # Probably whomp logic but I tried :~)
@@ -53,9 +44,7 @@ def game():
                             guesses=guesses, 
                             verdict=verdict,
                             victory=victory,
-                            attempts_left=attempts_left,
-                            labeled_guesses=labeled_guesses,
-                            current_user=current_user)
+                            labeled_guesses=labeled_guesses)
 
 @game_views.route('/evaluate_guess', methods=['POST'])
 @jwt_required()
@@ -65,20 +54,8 @@ def evaluateGuess():
 
     user_id = user.id
     game_id = curr_game.id
-    guess_digits = []
-
-    # Check if any digit is repeated
-    for i in range(curr_game.answer_length):
-        guess_digit = request.form.get(f'guess-digit-{i}')
-
-        if guess_digit in guess_digits:
-            flash('Two Numbers Cannot Be The Same!')
-            return redirect(request.referrer)
-
-        guess_digits.append(guess_digit)
-
-    # Construct the guess string
-    guess = ''.join(guess_digits)
+    
+    guess = ''.join(request.form.get(f'guess-digit-{i}') for i in range(curr_game.answer_length))
 
     try:
         user_guess = UserGuess(user_id=user_id, game_id=game_id, guess=guess)
