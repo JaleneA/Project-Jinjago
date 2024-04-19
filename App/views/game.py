@@ -54,7 +54,8 @@ def game():
                             verdict=verdict,
                             victory=victory,
                             attempts_left=attempts_left,
-                            labeled_guesses=labeled_guesses)
+                            labeled_guesses=labeled_guesses,
+                            current_user=current_user)
 
 @game_views.route('/evaluate_guess', methods=['POST'])
 @jwt_required()

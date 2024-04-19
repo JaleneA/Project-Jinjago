@@ -32,11 +32,11 @@ def login_action():
     password = request.form['password']
     token = login(username, password)
     if token == None:
-        flash('Bad username or password given'), 401
+        flash('Bad Username Or Password Given'), 401
         response = redirect(url_for('index_views.login_page'))
         return response
     else:
-        flash('Login Successful')
+        flash('Login Successful!')
         response = redirect(url_for('game_views.game'))
         set_access_cookies(response, token) 
         return response
@@ -44,7 +44,7 @@ def login_action():
 @auth_views.route('/logout', methods=['GET'])
 def logout_action():
     response = redirect(url_for('index_views.index_page')) 
-    flash("Logged Out!")
+    flash("Logged Out Successfully!")
     unset_jwt_cookies(response)
     return response
 
@@ -54,10 +54,10 @@ def signup_action():
     user = create_user(data['username'], data['password'])
     
     if user:
-        flash('Sign Up Successful')
+        flash('Sign Up Successful!')
         response = redirect(url_for('index_views.login_page'))
     else:
-        flash('Username Already Taken, Please Try Again'), 400
+        flash('Username Already Taken! Please Try Again'), 400
         response = redirect(url_for('index_views.signup_page'))
  
     return response

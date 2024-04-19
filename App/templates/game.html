@@ -6,13 +6,20 @@
 <body class="content fill-space" style="background-image: url('/static/img/gamebg.png'); background-size: cover; background-repeat: no-repeat;">
     <nav class="nav">
         <div class="nav-wrapper" style="background-color: #232021; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid white;">
-            <div style="display: flex; align-items: center;">
+            <a href="/" style="display: flex; align-items: center;">
                 <img src="/static/img/logo.png" style="width: 10%; margin-left: 10px;">
                 <span style="font-size: 1.5em; padding-left: 10px; width: 100%;">ShadowCipher</span>
+            </a>
+            <div>
+                <a href="#">
+                    <p style="font-size: 1em;">Logged In As: {{current_user.username}}</p>
+                </a>
             </div>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/logout">LogOut</a></li>
-            </ul>
+            <div>
+                <ul id="nav-mobile" class="right">
+                    <li><a href="/logout">LogOut</a></li>
+                </ul>
+            </div>
         </div>        
     </nav>
     <div class="row" style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
