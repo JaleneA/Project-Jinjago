@@ -26,26 +26,23 @@
 
     body {
         margin: 0;
-        background-color: rgb(44, 41, 41);
+        background-color: white;
         display: flex; /* Important */
     }
 
-    .how-to-play{
+    .how-to-play {
         width: 65%;
         background: #262627;
         border-radius: 3px;
         text-align: center;
-        padding: 0 30px 30px;
+        padding: 20px 20px;
         color: #333;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         margin: auto; /* Important */
     }
 
 
-    .how-to-play h2{
-        margin-top: 20px;
-        margin-bottom: 20px;
-        padding: 5px 0 5px;
+    .how-to-play .card {
         border: 1px solid rgb(164, 163, 159);
         border-radius: 5px;
         background-color: #9e2a34;
@@ -83,7 +80,7 @@
         font-family: my-font;
     }
 
-    .instructions-column h3{
+    .instructions-column h2{
         font-size: 20px;
         font-family: my-font;
         margin-bottom: 10px;
@@ -94,27 +91,28 @@
     <div class="how-to-play-container">
 
         <div class="how-to-play">
-            <h2>How To Play</h2>
-
+            <div class="card">
+                <h1>How To Play</h1>
+            </div>
             <div class="instructions-container">
                 
                 <div class="instructions-column">
                     <img src="/static/img/img.jpg" alt="placeholder1">
-                    <h3>| 1 |</h3>
+                    <h2>| 1 |</h2>
                     <p> Your challenge in Bulls and Cows is to unlock the secret number 
                         chosen by your opponent. Can you crack the code?</p>
                 </div>
 
                 <div class="instructions-column">
                     <img src="/static/img/img.jpg" alt="placeholder2">
-                    <h3>| 2 |</h3>
+                    <h2>| 2 |</h2>
                     <p> Pay attention to the clues - "bulls" mean you've got a digit in the right place, 
                         while "cows" mean you've got the right digit but in the wrong place</p>
                 </div>
 
                 <div class="instructions-column">
                     <img src="/static/img/img.jpg" alt="placeholder3">
-                    <h3>| 3 |</h3>
+                    <h2>| 3 |</h2>
                     <p> With each guess, use the feedback to refine your strategy and get 
                         closer to victory. Keep guessing and analyzing until you've cracked the code!</p>
                 </div>
