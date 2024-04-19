@@ -35,9 +35,9 @@ def game():
     # Checking if the player has achieved victory!
     victory = None
     if verdict and verdict['bulls'] == 4:
-        victory = "Congratulations! You Have Cracked The Code, Way To Go!"
+        victory = "Congratulations! You Did It!"
     elif (attempts_left == 0):
-        victory = "Whomp Whomp, Try Again Next Time You Whompyyyy Whomp"
+        victory = "You Lose!"
 
     # Attaching labels to each digit in the guesses
     # Probably whomp logic but I tried :~)
