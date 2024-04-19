@@ -73,7 +73,7 @@ def evaluateGuess():
         guess_digit = request.form.get(f'guess-digit-{i}')
 
         if guess_digit in guess_digits:
-            flash('Nope! Two Numbers Cannot Be The Same.')
+            flash('Two Numbers Cannot Be The Same!')
             return redirect(request.referrer)
 
         guess_digits.append(guess_digit)
