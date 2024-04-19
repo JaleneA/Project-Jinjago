@@ -6,9 +6,9 @@ from datetime import date
 
 user_history_views = Blueprint('user_history_views', __name__, template_folder='../templates')
 
-@user_history_views.route("/user_history/<user_id>", methods=["GET"]) #defaults={"game_id" : None}, methods=["GET"])
-#@user_history_views.route("/user_history/<user_id>/<game_id>", methods=["GET"])
-def user_history(user_id):
+@user_history_views.route("/user_history/<user_id>", defaults={"game_id" : None}, methods=["GET"])
+@user_history_views.route("/user_history/<user_id>/<game_id>", methods=["GET"])
+def user_history(user_id, game_id):
     user = User.query.filter_by(id=user_id).first()
     
     if not user:
@@ -24,12 +24,18 @@ def user_history(user_id):
     games = Game.query.filter(Game.id.in_(game_ids)).all()
     user_games = []
     for i in games:
-        user_games.append({
+        curr_game = {
+            "id" : i.id,
             "date" : i.creation_date,
             "answer" : "[REDACTED]" if date.today == i.creation_date else i.answer,
+            "answer_length" : i.answer_length,
+            "max_attempts" : i.max_attempts,
             "guesses" : [j for j in guesses if j.game_id == i.id]
-        })
+        }
+        curr_game["num_guesses"] = len(curr_game["guesses"])
+        user_games.append(curr_game)
 
     return render_template("user_history.html",
                         user=user,
-                        user_games=user_games)
+                        user_games=user_games,
+                        num_games = len(user_games))

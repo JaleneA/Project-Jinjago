@@ -8,14 +8,14 @@
 <body class="content fill-space" style="background-color: #262627;">
   <nav class="nav-extended" style="margin-bottom:10px; background-color: #202020;">
     <div class="nav-wrapper row">
-      <a href="#" style="font-size: 1.5em" class="brand-logo left">{{ user.username }}'s Game History</a>
+      <a href="#" style="font-size: 1.5em; margin-left: 10px" class="brand-logo left">{{ user.username }}'s Game History</a>
       <form class="right" action="/user_search" method="GET">
         <ul class="col">
-          <li>
-            <input type="search" name="username" id="username" placeholder="Search username">
-          </li>
-          <li>
+          <li style="margin: 5px;">
             <input type="submit" value="Search">
+          </li>
+          <li style="margin: 5px;">
+            <input type="search" name="username" id="username" placeholder="Search username" style="color: white">
           </li>
         </div>
       </form>
@@ -43,34 +43,46 @@
 
   <div class="row" style="margin: 0; padding:0; margin-top:-10px">
     <div class="col s12 m9 l8">
-      <h1 style="color: white;">Games</h1>
+      <h1 style="color: white;">My Games ({{ num_games }})</h1>
     </div>
   </div>
 
   <div class="row">
     <section class="col s12 m9 l8" style="overflow-y:scroll; height: 70vh">
-      <div class="row" style="width: 100%">
-        {% for game in user_games %}
-        <div class="card">
-          <!-- <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="images/office.jpg">
-          </div> -->
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">{{ game.date.strftime('%B %d, %Y') }}<i class="material-icons right">more_vert</i></span>
-            <p>Answer: {{ game.answer }}</p>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
+      {% if not user_games %}
+      <p style="color: white">You haven't played any games yet!</p>
+      {% else %}
+      <table class="responsive-table centered highlight striped" style="color: white">
+        <thead style="width: 100%">
+          <tr>
+            <th>Date</th>
+            <th>No. Digits</th>
+            <th>Max Attempts</th>
+            <th>No. Guesses</th>
+            <th>Guesses</th>
+          </tr>
+        </thead>
+        <tbody style="width: 100%">
+          {% for game in user_games %}
+          <tr>
+            <td>{{ game.date.strftime('%B %d, %Y') }}</td>
+            <td>{{ game.answer_length }}</td>
+            <td>{{ game.max_attempts }}</td>
+            <td>{{ game.num_guesses }}</td>
+            <td><a href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}">View Details</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
     </section>
 
     <section class="col s12 m3 l4" style="overflow-y:scroll; height: 70vh">
+      {% if not selected_game %}
+      <p style="color: white"> No games selected</p>
+      {% else %}
       <ul class="collection">
-        {#<!-- show students currently in course here -->
+        
         <!-- {% for student in enrolled_students %}
         <li class="collection-item avatar">
           <img src="{{ student.image }}" alt="" class="circle">
@@ -84,6 +96,7 @@
         </li>
         {% endfor %} -->#}
       </ul>
+      {% endif %}
     </section>
   </div>
 </body>
