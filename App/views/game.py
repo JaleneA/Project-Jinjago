@@ -13,7 +13,7 @@ game_views = Blueprint('game_views', __name__, template_folder='../templates')
 @game_views.route('/game', methods=['GET'])
 @jwt_required()
 def game():
-    current_user = jwt_current_user.username
+    current_user = jwt_current_user
     today = datetime.utcnow().date()
     curr_game = get_curr_game()
 
