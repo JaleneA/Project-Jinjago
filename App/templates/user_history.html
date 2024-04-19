@@ -52,28 +52,30 @@
       {% if not user_games %}
       <p style="color: white">You haven't played any games yet!</p>
       {% else %}
-      <table class="responsive-table centered highlight striped" style="color: white">
-        <thead style="width: 100%">
-          <tr>
-            <th>Date</th>
-            <th>No. Digits</th>
-            <th>Max Attempts</th>
-            <th>No. Guesses</th>
-            <th>Guesses</th>
-          </tr>
-        </thead>
-        <tbody style="width: 100%">
-          {% for game in user_games %}
-          <tr>
-            <td>{{ game.date.strftime('%B %d, %Y') }}</td>
-            <td>{{ game.answer_length }}</td>
-            <td>{{ game.max_attempts }}</td>
-            <td>{{ game.num_guesses }}</td>
-            <td><a class="waves-effect waves-light btn" href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}">View Details</a></td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      <div class="responsive-table">
+        <table class="centered highlight striped" style="color: white">
+          <thead style="width: 100%">
+            <tr>
+              <th>Date</th>
+              <th>No. Digits</th>
+              <th>Max Attempts</th>
+              <th>No. Guesses</th>
+              <th>Guesses</th>
+            </tr>
+          </thead>
+          <tbody style="width: 100%">
+            {% for game in user_games %}
+            <tr>
+              <td>{{ game.date.strftime('%B %d, %Y') }}</td>
+              <td>{{ game.answer_length }}</td>
+              <td>{{ game.max_attempts }}</td>
+              <td>{{ game.num_guesses }}</td>
+              <td><a class="waves-effect waves-light btn" href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}">View Details</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
       {% endif %}
     </section>
 
@@ -81,20 +83,11 @@
       {% if not selected_game %}
       <p style="color: white"> No games selected</p>
       {% else %}
-      <ul class="collection">
-        
-        <!-- {% for student in enrolled_students %}
-        <li class="collection-item avatar">
-          <img src="{{ student.image }}" alt="" class="circle">
-          <div class="row">
-            <div class="col">
-              <span class="title">{{ student.first_name }} {{ student.last_name }}</span>
-              <p>{{ student.id }}</</p>
-            </div>
-            <a class="right waves-effect waves-light btn" href="/drop_course/{{ student.id }}/{{ selected_course }}">Remove</a>
-          </div>
-        </li>
-        {% endfor %} -->#}
+      <ul class="collection with-header">
+        <h2>Guesses</h2>
+        {% for guess in selected_game.guesses %}
+        <li class="collection-item">{{ guess }}</li>
+        {% endfor %}
       </ul>
       {% endif %}
     </section>
