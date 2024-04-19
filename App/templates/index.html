@@ -48,12 +48,13 @@
           margin: 0 auto; /* Centers the element horizontally */
           text-align: center; /* Centers the content within the element */
           height: 60%;
-          max-width: 60%; /* Sets a maximum width for the card */
+          max-width: 100%; /* Sets a maximum width for the card */
           border: 10px double #ABA297; 
           border-radius: 20px; 
-
           backdrop-filter: blur(10px); 
           background: transparent; 
+          /* padding-bottom: 45px; */
+          padding: 45px;
       }
 
       .home-card-image {
@@ -68,8 +69,9 @@
           color: rgba(225, 229, 234, 0.868);
       }
 
-      .home-card-words h3{
+      .home-card-words span{
           font-family: my-fancy-font;
+          font-size: 2.8em;
       }
 
 
@@ -91,7 +93,7 @@
           background-color: white;
           width: 50%; /* Set a specific width for the button */
           flex-grow: 1;
-      margin-right: 10px; /* Add margin between the buttons */
+          margin-right: 10px; /* Add margin between the buttons */
       }
 
 
@@ -145,30 +147,32 @@
           <div class="home-card-content">
 
               <div class="home-card-image">
-                  <img src="/static/img/logo.png" alt="logo" style="max-width: 100px;">
+                  <img src="/static/img/logo.png" alt="logo" style="max-width: 150px;">
               </div> 
 
               <div class="home-card-words">                
-                  <h3>Discover the hidden code!</h3>
+                  <span>Discover the hidden code</span>
 
+                  <br>
                   <br>
 
                   <p>
-                      Ninjas, your goal awaits: each day brings a new obstacle as you work to crack the code.
-                      Navigate the puzzle with precision and agility to reveal the secrets code hidden within.
-                      Time is of the essence; each daybreak brings a new challenge. Are you ready?
+                      Ninjas, your mission awaits:
+                      Navigate the puzzle with precision and agility.<br>
+                      Time is of the essence; Each daybreak brings a new challenge.<br>
+                      Are You Ready?
                   </p>              
 
                   <p>   
                       <sub>ShadowCipher draws inspiration from 'Bulls and Cows,' an independent game predating 
-                          Mastermind™, which is a registered trademark.
+                          Mastermind™
                       </sub>
-                  </p>
+                  </p><br>
               </div>
 
               <div class="home-card-action">
-                  <a class="button" href="login_page" class="blue-text text-white btn"><strong>B e g i n</strong></a>
-                  <a class="button" href="/howtoplay" class="blue-text text-white btn"><strong>h o w  t o  P l a y</strong></a>
+                  <a class="button" href="login_page" class="blue-text text-white btn"><span>B e g i n</span></a>
+                  <a class="button" href="/howtoplay" class="blue-text text-white btn"><span>h o w  t o  P l a y</span></a>
               </div>            
           </div>
       </div>
