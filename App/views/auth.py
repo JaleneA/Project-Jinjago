@@ -4,6 +4,8 @@ from flask_jwt_extended import jwt_required, current_user, unset_jwt_cookies, se
 from.index import index_views
 from .game import game_views
 
+from App.models import User
+
 from App.controllers import (
     login,
     create_user
