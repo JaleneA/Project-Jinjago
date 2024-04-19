@@ -15,7 +15,7 @@ class Game(db.Model):
     creation_date = db.Column(db.Date, nullable=False, unique=True, default=date.today)
     max_attempts = db.Column(db.Integer, db.CheckConstraint(f"max_attempts >= {__MIN_ATTEMPTS}"), nullable=False)
 
-    # NOTE: Answer must be stored as a string instead of an int to preserve any leading zeroes
+    # Note: Answer must be stored as a string instead of an int to preserve any leading zeroes
     answer = db.Column(db.String(MAX_CODE_LENGTH), db.CheckConstraint(
         f"answer >= {MIN_CODE_VALUE} AND answer <= {MAX_CODE_VALUE} AND LENGTH(answer) >= {MIN_CODE_LENGTH} AND LENGTH(answer) <= {MAX_CODE_LENGTH}"),
         nullable=False)
@@ -43,13 +43,13 @@ class Game(db.Model):
     
     def __str__(self):
         return f"""
-    Game Info:
-        |- ID: {self.id}
-        |- Creation Date: {self.creation_date}
-        |- Max Attempts: {self.max_attempts}
-        |- Answer: {self.answer}
-        |- Answer Length: {self.answer_length}
-    """
+        Game Info:
+            |- ID: {self.id}
+            |- Creation Date: {self.creation_date}
+            |- Max Attempts: {self.max_attempts}
+            |- Answer: {self.answer}
+            |- Answer Length: {self.answer_length}
+        """
     
     def get_json(self):
         return {
@@ -214,6 +214,41 @@ class Game(db.Model):
                             results["cows"] += 1
                         else:
                             results["milk"] += 1
+
+                return results          
+        except ValueError as e:
+            # Error handling done by the caller function (i.e., the route)
+            raise e
+
+    # For the ease of having the previous guess boxes respond in terms of changing colour based on its state
+    # Of being a Bull, Cow, or Milk. this method does just that!
+    # Inspired by Skylar's evaluateGuess() method above
+    def attachLabels(self, guess, answer):
+        """
+        Attaches labels ('bull', 'cow', or 'milk') to each digit in the guess based on the correct answer.
+
+        Args:
+            guess (str): The user's guess as a string.
+            answer (str): The correct answer as a string.
+
+        Returns:
+            list of str: A list where each element is the digit with its corresponding label.
+        """
+        results = []
+
+        try:
+            if (self.__validateGuess(guess)):
+                guess = str(guess)
+                ans_str = str(self.answer)
+
+                for g, a in zip(guess, ans_str):
+                    if g == a:
+                        results.append((g, 'bull'))
+                    else:
+                        if g in ans_str:
+                            results.append((g, 'cow'))
+                        else:
+                            results.append((g, 'milk'))
 
                 return results          
         except ValueError as e:

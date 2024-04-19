@@ -5,170 +5,173 @@
 {{ super() }}
 
 {% block content %}
-<style>
-    @media only screen and (max-width: 600px) {
 
-    .home-card {
-        border-width: 20px; /* Adjust border width for mobile screens */
-    }
-    }
+  <style>
+      @media only screen and (max-width: 600px) {
 
-    *{
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
+      .home-card {
+          border-width: 20px; /* Adjust border width for mobile screens */
+      }
+      }
 
-    @font-face {
-        font-family: my-font;
-        src: url(/static/custom_fonts/Museo700-Regular.otf);
-    }
+      *{
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+      }
 
-    @font-face {
-        font-family: my-fancy-font;
-        src: url(/static/custom_fonts/Japanese.ttf);
-    }
+      @font-face {
+          font-family: my-font;
+          src: url(/static/custom_fonts/Museo700-Regular.otf);
+      }
 
-    body{
-        background-color: rgb(53, 52, 47);
-        height: 100vh; /* Set the height of the body to fill the viewport */
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      @font-face {
+          font-family: my-fancy-font;
+          src: url(/static/custom_fonts/Japanese.ttf);
+      }
 
-        background-image: url('/static/img/main.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed; /* This keeps the background fixed while scrolling */
-    }
+      body{
+          background-color: rgb(53, 52, 47);
+          height: 100vh; /* Set the height of the body to fill the viewport */
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
-
-    .home-card{
-        margin: 0 auto; /* Centers the element horizontally */
-        text-align: center; /* Centers the content within the element */
-        height: 60%;
-        max-width: 60%; /* Sets a maximum width for the card */
-        border: 10px double #ABA297; 
-        border-radius: 20px; 
-
-        backdrop-filter: blur(10px); 
-        background: transparent; 
-    }
-
-    .home-card-image {
-        position: relative; /* Enables relative positioning for the image container */
-        margin-bottom: 0px;
-    }
+          background-image: url('/static/img/main.png');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-attachment: fixed; /* This keeps the background fixed while scrolling */
+      }
 
 
-    .home-card-words{
-        font-family: my-font;
-        margin-bottom: 10px;
-        color: rgba(225, 229, 234, 0.868);
-    }
+      .home-card{
+          margin: 0 auto; /* Centers the element horizontally */
+          text-align: center; /* Centers the content within the element */
+          height: 60%;
+          max-width: 60%; /* Sets a maximum width for the card */
+          border: 10px double #ABA297; 
+          border-radius: 20px; 
 
-    .home-card-words h3{
-        font-family: my-fancy-font;
-    }
+          backdrop-filter: blur(10px); 
+          background: transparent; 
+      }
 
-
-    .home-card-action{
-        font-family: my-fancy-font;
-        display: flex;
-
-    }
-
-    .home-card-action a:nth-child(1){
-        background-color: white;
-        width: 50%; /* Set a specific width for the button */
-        flex-grow: 1;
-        margin-left: 10px; /* Add margin between the buttons */
-        margin-right: 10px; /* Add margin between the buttons */
-    }
-
-    .home-card-action a:nth-child(2) {
-        background-color: white;
-        width: 50%; /* Set a specific width for the button */
-        flex-grow: 1;
-    margin-right: 10px; /* Add margin between the buttons */
-    }
+      .home-card-image {
+          position: relative; /* Enables relative positioning for the image container */
+          margin-bottom: 0px;
+      }
 
 
-    .button {
-        background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        border: none;
-        color: #333333; /* Dark text */
-        cursor: pointer;
-        display: inline-block;
-        font-family: my-fancy-font;
-        font-size: 20px;
-        padding: 5px 10px;
-        text-align: center;
-        text-decoration: none;
-        -webkit-animation: glowing 1500ms infinite;
-        -moz-animation: glowing 1500ms infinite;
-        -o-animation: glowing 1500ms infinite;
-        animation: glowing 1500ms infinite;
-    }
+      .home-card-words{
+          font-family: my-font;
+          margin-bottom: 10px;
+          color: rgba(225, 229, 234, 0.868);
+      }
 
-    @-webkit-keyframes glowing {
-        0% { background-color: rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 0 3px #333333; }
-        50% { background-color: rgba(255, 255, 255, 0.5); -webkit-box-shadow: 0 0 40px #333333; }
-        100% { background-color: rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 0 3px #333333; }
-    }
+      .home-card-words h3{
+          font-family: my-fancy-font;
+      }
 
-    @-moz-keyframes glowing {
-        0% { background-color: rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 3px #333333; }
-        50% { background-color: rgba(255, 255, 255, 0.5); -moz-box-shadow: 0 0 40px #333333; }
-        100% { background-color: rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 3px #333333; }
-    }
 
-    @-o-keyframes glowing {
-        0% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
-        50% { background-color: rgba(255, 255, 255, 0.5); box-shadow: 0 0 40px #333333; }
-        100% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
-    }
+      .home-card-action{
+          font-family: my-fancy-font;
+          display: flex;
 
-    @keyframes glowing {
-        0% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
-        50% { background-color: rgba(255, 255, 255, 0.5); box-shadow: 0 0 40px #333333; }
-        100% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
-    }
-</style>
-<body>
-    <div class="home-card">          
+      }
 
-        <div class="home-card-content">
+      .home-card-action a:nth-child(1){
+          background-color: white;
+          width: 50%; /* Set a specific width for the button */
+          flex-grow: 1;
+          margin-left: 10px; /* Add margin between the buttons */
+          margin-right: 10px; /* Add margin between the buttons */
+      }
 
-            <div class="home-card-image">
-                <img src="/static/img/logo.png" alt="logo" style="max-width: 100px;">
-            </div> 
+      .home-card-action a:nth-child(2) {
+          background-color: white;
+          width: 50%; /* Set a specific width for the button */
+          flex-grow: 1;
+      margin-right: 10px; /* Add margin between the buttons */
+      }
 
-            <div class="home-card-words">                
-                <h3>Discover the hidden code!</h3>
-                
-                <br>
 
-                <p>
-                    Ninjas, your goal awaits: each day brings a new obstacle as you work to crack the code.
-                    Navigate the puzzle with precision and agility to reveal the secrets code hidden within.
-                    Time is of the essence; each daybreak brings a new challenge. Are you ready?
-                </p>              
-                    
-                <p>   
-                    <sub>ShadowCipher draws inspiration from 'Bulls and Cows,' an independent game predating 
-                        Mastermind™, which is a registered trademark.
-                    </sub>
-                </p>
-            </div>
+      .button {
+          background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+          -webkit-border-radius: 10px;
+          border-radius: 10px;
+          border: none;
+          color: #333333; /* Dark text */
+          cursor: pointer;
+          display: inline-block;
+          font-family: my-fancy-font;
+          font-size: 20px;
+          padding: 5px 10px;
+          text-align: center;
+          text-decoration: none;
+          -webkit-animation: glowing 1500ms infinite;
+          -moz-animation: glowing 1500ms infinite;
+          -o-animation: glowing 1500ms infinite;
+          animation: glowing 1500ms infinite;
+      }
 
-            <div class="home-card-action">
-                <a class="button" href="login" class="blue-text text-white btn"><strong>B e g i n</strong></a>
-                <a class="button" href="/howtoplay" class="blue-text text-white btn"><strong>h o w  t o  P l a y</strong></a>
-            </div>            
-        </div>
-    </div>
-</body>
+      @-webkit-keyframes glowing {
+          0% { background-color: rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 0 3px #333333; }
+          50% { background-color: rgba(255, 255, 255, 0.5); -webkit-box-shadow: 0 0 40px #333333; }
+          100% { background-color: rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 0 3px #333333; }
+      }
+
+      @-moz-keyframes glowing {
+          0% { background-color: rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 3px #333333; }
+          50% { background-color: rgba(255, 255, 255, 0.5); -moz-box-shadow: 0 0 40px #333333; }
+          100% { background-color: rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 3px #333333; }
+      }
+
+      @-o-keyframes glowing {
+          0% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
+          50% { background-color: rgba(255, 255, 255, 0.5); box-shadow: 0 0 40px #333333; }
+          100% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
+      }
+
+      @keyframes glowing {
+          0% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
+          50% { background-color: rgba(255, 255, 255, 0.5); box-shadow: 0 0 40px #333333; }
+          100% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
+      }
+  </style>
+
+  <body>
+      <div class="home-card">          
+
+          <div class="home-card-content">
+
+              <div class="home-card-image">
+                  <img src="/static/img/logo.png" alt="logo" style="max-width: 100px;">
+              </div> 
+
+              <div class="home-card-words">                
+                  <h3>Discover the hidden code!</h3>
+
+                  <br>
+
+                  <p>
+                      Ninjas, your goal awaits: each day brings a new obstacle as you work to crack the code.
+                      Navigate the puzzle with precision and agility to reveal the secrets code hidden within.
+                      Time is of the essence; each daybreak brings a new challenge. Are you ready?
+                  </p>              
+
+                  <p>   
+                      <sub>ShadowCipher draws inspiration from 'Bulls and Cows,' an independent game predating 
+                          Mastermind™, which is a registered trademark.
+                      </sub>
+                  </p>
+              </div>
+
+              <div class="home-card-action">
+                  <a class="button" href="login" class="blue-text text-white btn"><strong>B e g i n</strong></a>
+                  <a class="button" href="/howtoplay" class="blue-text text-white btn"><strong>h o w  t o  P l a y</strong></a>
+              </div>            
+          </div>
+      </div>
+  </body>
+
 {% endblock %}
