@@ -85,8 +85,20 @@
       {% else %}
       <ul class="collection with-header">
         <h2>Guesses</h2>
-        {% for guess in selected_game.guesses %}
-        <li class="collection-item">{{ guess }}</li>
+        {% for guess in selected_game.labeled_guesses %}
+        <li class="collection-item">
+          <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+            {% for digit, label in labeled_guess %}
+                {% if label == 'bull' %}
+                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 5px; padding: 6px; color: white; font-size: 20px; text-align: center; background-color: #6ca965;" readonly>
+                {% elif label == 'cow' %}
+                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 5px; padding: 6px; color: white; font-size: 20px; text-align: center; background-color: #c8b653;" readonly>
+                {% else %}
+                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 5px; padding: 6px; color: white; font-size: 20px; text-align: center; background-color: #787c7f;" readonly>
+                {% endif %}    
+            {% endfor %}
+        </div>
+        </li>
         {% endfor %}
       </ul>
       {% endif %}

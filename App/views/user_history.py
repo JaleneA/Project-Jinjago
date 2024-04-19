@@ -25,13 +25,18 @@ def user_history(user_id, game_id):
             "answer" : "[REDACTED]" if date.today == game.creation_date else game.answer,
             "answer_length" : game.answer_length,
             "max_attempts" : game.max_attempts,
-            "guesses" : [guess for guess in guesses if guess.game_id == game.id],
+            "labeled_guesses" : [game.attachLabels(guess, game.answer) for guess in guesses if guess.game_id == game.id],
             "num_guesses" : sum(1 for guess in guesses if guess.game_id == game.id)
         }
         for game in games
     ]
+    
+    selected_game = None
+    if game_id and Game.query.filter_by(id=game_id):
+        selected_game = next((game for game in user_games if game["id"] == game_id), None)
 
     return render_template("user_history.html",
                         user=user,
                         user_games=user_games,
-                        num_games = len(user_games))
+                        num_games=len(user_games),
+                        selected_game = selected_game)

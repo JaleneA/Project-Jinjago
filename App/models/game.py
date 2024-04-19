@@ -210,10 +210,7 @@ class Game(db.Model):
                     if g == a:
                         results["bulls"] += 1
                     else:
-                        if g in ans_str:
-                            results["cows"] += 1
-                        else:
-                            results["milk"] += 1
+                        results["cows" if g in ans_str else "milk"] += 1
 
                 return results          
         except ValueError as e:
@@ -245,10 +242,7 @@ class Game(db.Model):
                     if g == a:
                         results.append((g, 'bull'))
                     else:
-                        if g in ans_str:
-                            results.append((g, 'cow'))
-                        else:
-                            results.append((g, 'milk'))
+                        results.append((g, 'cow' if g in ans_str else 'milk'))
 
                 return results          
         except ValueError as e:
