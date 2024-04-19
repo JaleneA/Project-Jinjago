@@ -43,12 +43,12 @@
 
   <div class="row" style="margin: 0; padding:0; margin-top:-10px">
     <div class="col s12 m9 l8">
-      <h1 style="color: white;">My Games ({{ num_games }})</h1>
+      <span style="color: white;">My Games ({{ num_games }})</span>
     </div>
   </div>
 
   <div class="row">
-    <section class="col s12 m9 l8" style="overflow-y:scroll; height: 70vh">
+    <section class="col s12 m9 l8" style="overflow-y:scroll; height: 80vh">
       {% if not user_games %}
       <p style="color: white">You haven't played any games yet!</p>
       {% else %}
@@ -79,7 +79,7 @@
       {% endif %}
     </section>
 
-    <section class="col s12 m3 l4" style="overflow-y:scroll; height: 70vh">
+    <section class="col s12 m3 l4" style="height: 70vh">
       {% if not selected_game %}
       <p style="color: white"> No games selected</p>
       {% else %}
@@ -89,11 +89,11 @@
           <div style="display: flex; justify-content: center; margin-bottom: 10px;">
             {% for digit, label in labeled_guess %}
                 {% if label == 'bull' %}
-                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 5px; padding: 6px; color: white; font-size: 20px; text-align: center; background-color: #6ca965;" readonly>
+                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 3px; padding: 6px; color: white; font-size: 25px; text-align: center; border: 5px solid #89AF9E;" readonly>
                 {% elif label == 'cow' %}
-                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 5px; padding: 6px; color: white; font-size: 20px; text-align: center; background-color: #c8b653;" readonly>
+                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 3px; padding: 6px; color: white; font-size: 25px; text-align: center; border: 5px solid #E8C980;" readonly>
                 {% else %}
-                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 5px; padding: 6px; color: white; font-size: 20px; text-align: center; background-color: #787c7f;" readonly>
+                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 3px; padding: 6px; color: white; font-size: 25px; text-align: center; border: 5px solid #AF9E89;" readonly>
                 {% endif %}    
             {% endfor %}
         </div>
