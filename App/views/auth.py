@@ -52,11 +52,14 @@ def logout_action():
 def signup_action():
     data = request.form
     user = create_user(data['username'], data['password'])
-    response = redirect(url_for('index_views.login_page'))
-    if not user:
-        flash('Problem Creating New Account'), 401
-    else:
+    
+    if user:
         flash('Sign Up Successful')
+        response = redirect(url_for('index_views.login_page'))
+    else:
+        flash('Username Already Taken, Please Try Again'), 400
+        response = redirect(url_for('index_views.signup_page'))
+ 
     return response
 
 # '''
