@@ -210,10 +210,7 @@ class Game(db.Model):
                     if g == a:
                         results["bulls"] += 1
                     else:
-                        if g in ans_str:
-                            results["cows"] += 1
-                        else:
-                            results["milk"] += 1
+                        results["cows" if g in ans_str else "milk"] += 1
 
                 return results          
         except ValueError as e:
@@ -222,7 +219,7 @@ class Game(db.Model):
 
     # For the ease of having the previous guess boxes respond in terms of changing colour based on its state
     # Of being a Bull, Cow, or Milk. this method does just that!
-    # Inspired by Skylar's evaluateGuess() method above
+    # Inspired by Skyler's evaluateGuess() method above
     def attachLabels(self, guess, answer):
         """
         Attaches labels ('bull', 'cow', or 'milk') to each digit in the guess based on the correct answer.
@@ -245,10 +242,7 @@ class Game(db.Model):
                     if g == a:
                         results.append((g, 'bull'))
                     else:
-                        if g in ans_str:
-                            results.append((g, 'cow'))
-                        else:
-                            results.append((g, 'milk'))
+                        results.append((g, 'cow' if g in ans_str else 'milk'))
 
                 return results          
         except ValueError as e:

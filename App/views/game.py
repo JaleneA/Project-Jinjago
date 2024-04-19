@@ -44,9 +44,8 @@ def game():
     # Probably whomp logic but I tried :~)
     labeled_guesses = []
     if guesses and verdict:
-        for guess in guesses:
-            labeled_guess = curr_game.attachLabels(guess.guess, curr_game.answer)
-            labeled_guesses.append(labeled_guess)
+        # Editted to use list comprehension - Sky
+        labeled_guesses = [curr_game.attachLabels(guess.guess, curr_game.answer) for guess in guesses]
     
     return render_template('game.html', 
                             curr_game=curr_game_json, 
