@@ -4,16 +4,16 @@
 
 {% block content %}
 <body class="content fill-space" style="background-color: #292F33;">
-    <!-- <nav class="nav" style="margin-bottom:10px">
+    <nav class="nav" style="margin-bottom:10px">
         <div class="nav-wrapper" style="background-color: #292F33; display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center;">
                 <span style="font-size: 1.5em; text-align: center; width: 100%;">ShadowCipher</span>
             </div>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/logout">How To Play</a></li>
+                <li><a href="/logout">LogOut</a></li>
             </ul>
         </div>
-    </nav> -->
+    </nav>
     
     <div class="row" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
         <section style="width: 70%; max-width: 500px; height: 86vh;">
@@ -62,16 +62,6 @@
                         </div>                        
                         {% endif %}
                     </form>
-                </div>
-            </div>
-            <div class="card" style="background-color: #262627; color: white;">
-                <div class="card-title">
-                    Just For Testing
-                </div>
-                <div class="card-content">
-                    <h5>Bulls: {{ verdict.bulls }}</h5>
-                    <h5>Cows: {{ verdict.cows }}</h5>
-                    <h5>Milk: {{ verdict.milk }}</h5>
                 </div>
             </div>
         </section>
