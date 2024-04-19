@@ -3,7 +3,18 @@
 {% block page %}Login - ShadowCipher{% endblock %}
 
 {% block content %}
-<body class="content fill-space" style="background-image: url('/static/img/login.png'); background-size: 100% 100%; background-repeat: no-repeat;">
+<style>
+    /* Media query for smaller screens */
+    @media only screen and (max-width: 768px) {
+        body {
+            background-image: url('/static/img/small_login.png') !important;
+            background-size: contain !important;
+            background-color: #262627 !important; 
+        }
+    }
+</style>
+
+<body class="content fill-space" style="background-color: #262627; background-image: url('/static/img/login.png'); background-position: center; background-size: contain; background-repeat: no-repeat;">
     <div class="row">
         <!-- <div class="col s12 m6" style="padding: 0%;">
             <img class="responsive-img" src="/static/img/Login_Page_Background.png" style="width: 100%; height: 100%; object-fit: full">
@@ -15,24 +26,24 @@
                     <form class="col s12" id="loginForm" method="POST" action="/login">
                         <div class="row">
                             <label for="username">Username</label><br>
-                            <div class="input-field col s8" style="background-color: #ABA297; border-radius: 100px;">
+                            <div class="input-field col s7" style="background-color: #ABA297; border-radius: 100px;">
                             <input name="username" type="text">
                             </div>
                         </div>
                         <div class="row">
                             <label for="password">Password</label><br>
-                            <div class="input-field col s8" style="background-color: #ABA297; border-radius: 100px;">
+                            <div class="input-field col s7" style="background-color: #ABA297; border-radius: 100px;">
                             <input name="password" type="password">
                             </div>
                         </div>
-                        <div class="card-action row" style="padding-right: 6em;">
-                            <button class="orange black-text btn right" type="submit" style="border-radius: 20px; font-size: 1.2em;">Play</button>
+                        <div class="row" style="color: #ABA297;">
+                            <label for="signup_option">Don't have an account?</label>
+                            <a name="signup_option" href="/signup_page" style="color: inherit; text-decoration: underline;">Sign-Up!</a>
+                        </div>
+                        <div class="row" style="padding-right: 6em;">
+                            <button class="btn" type="submit" style="border-radius: 20px; font-size: 1.3em; background-color: #CD6240;">Play</button>
                         </div>                        
-                    </form>
-                    <div class="col s12 m6 offset-m8 center-align" style="color: #ABA297;">
-                        <label for="signup_option">Don't have an account?</label><br>
-                        <a name="signup_option" href="/signup_page" style="color: inherit; text-decoration: underline;">Sign-Up!</a>
-                    </div>                    
+                    </form>                    
                 </main>
             </div>
         </div>
