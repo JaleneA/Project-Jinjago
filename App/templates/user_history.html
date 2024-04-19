@@ -83,10 +83,9 @@
       {% if not selected_game %}
       <p style="color: white"> No games selected</p>
       {% else %}
-      <ul class="collection with-header">
-        <h2>Guesses</h2>
-        {% for guess in selected_game.labeled_guesses %}
-        <li class="collection-item">
+      <ul class="collection" style="border: none">
+        {% for labeled_guess in selected_game.labeled_guesses %}
+        <li class="collection-item" style="background-color: inherit; border: none">
           <div style="display: flex; justify-content: center; margin-bottom: 10px;">
             {% for digit, label in labeled_guess %}
                 {% if label == 'bull' %}
