@@ -13,6 +13,7 @@ game_views = Blueprint('game_views', __name__, template_folder='../templates')
 @game_views.route('/game', methods=['GET'])
 @jwt_required()
 def game():
+    current_user = jwt_current_user.username
     today = datetime.utcnow().date()
     curr_game = get_curr_game()
 
@@ -65,8 +66,20 @@ def evaluateGuess():
 
     user_id = user.id
     game_id = curr_game.id
-    
-    guess = ''.join(request.form.get(f'guess-digit-{i}') for i in range(curr_game.answer_length))
+    guess_digits = []
+
+    # Check if any digit is repeated
+    for i in range(curr_game.answer_length):
+        guess_digit = request.form.get(f'guess-digit-{i}')
+
+        if guess_digit in guess_digits:
+            flash('Nope! Two Numbers Cannot Be The Same.')
+            return redirect(request.referrer)
+
+        guess_digits.append(guess_digit)
+
+    # Construct the guess string
+    guess = ''.join(guess_digits)
 
     try:
         user_guess = UserGuess(user_id=user_id, game_id=game_id, guess=guess)
