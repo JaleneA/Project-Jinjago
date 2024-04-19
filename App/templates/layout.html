@@ -70,19 +70,19 @@
     </div>
   </nav> -->
   <div>
-    <div class="messages">
+    <div class="messages" style="position: fixed; top: 20px; left: 20px; z-index: 1000;">
       {% with messages = get_flashed_messages() %}
-      {% if messages %}
-      <div id="alert" class="col s10 offset-s1">
-        <a href="" id="close">&times;</a>
-        {% for message in messages %}
-          <div style="font-weight: bold;text-align: center;font-size: 1.2em;">{{ message }}</div>
-        {% endfor %}
-      </div>
-
-      {% endif %}
+        {% if messages %}
+          <div id="alert">
+            <a href="" id="close">&times;</a>
+            {% for message in messages %}
+            <div class="toast" style="background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px 20px; margin-bottom: 10px; border-radius: 5px; animation: slideIn 0.5s ease-in-out, fadeOut 0.5s 2.5s ease-in-out forwards;">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
       {% endwith %}
     </div>
+    
     {% block content %}{% endblock %}
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
