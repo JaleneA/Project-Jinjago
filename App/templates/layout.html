@@ -70,13 +70,13 @@
     </div>
   </nav> -->
   <div>
-    <div class="messages" style="position: fixed; top: 20px; left: 20px; z-index: 1000;">
+    <div class="messages" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
       {% with messages = get_flashed_messages() %}
         {% if messages %}
           <div id="alert">
             
             {% for message in messages %}
-            <div style="background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 20px 40px; margin-top: 490px; border-radius: 5px; font-size: 1.2em; border: double 3px white;">
+            <div style="background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 20px 40px; border-radius: 5px; font-size: 1.2em; border: double 3px white;">
               <a href="" id="close" style="color: #fff;">&times</a>
               {{ message }}
             </div>
