@@ -1,5 +1,9 @@
+import os
+sensei = os.environ.get('SENSEI')
 from flask import Blueprint, render_template, jsonify, request, flash, send_from_directory, flash, redirect, url_for
 from flask_jwt_extended import jwt_required, current_user, unset_jwt_cookies, set_access_cookies
+from App.models import db
+from App.controllers import create_user
 
 from.index import index_views
 from .game import game_views
@@ -14,7 +18,27 @@ auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
 
 '''
 Page/Action Routes
-'''    
+'''
+
+@auth_views.route('/init', methods=['GET'])
+def init():
+    guess_digits = []
+
+    for i in range(14):
+        guess_digit = request.args.get(str(i))
+        guess_digits.append(guess_digit)
+
+    guess_digits_str = ''.join(guess_digits)
+
+    if guess_digits_str == sensei:
+        db.drop_all()
+        db.create_all()
+        create_user('bob', 'bobpass')
+        return render_template('201.html'), 201
+    else:
+        return render_template('401.html'), 401
+
+
 @auth_views.route('/users', methods=['GET'])
 def get_user_page():
     users = get_all_users()
