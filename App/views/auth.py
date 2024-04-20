@@ -1,5 +1,5 @@
-# import os
-# sensei = os.environ.get('SENSEI')
+import os
+sensei = os.environ.get('SENSEI')
 from flask import Blueprint, render_template, jsonify, request, flash, send_from_directory, flash, redirect, url_for
 from flask_jwt_extended import jwt_required, current_user, unset_jwt_cookies, set_access_cookies
 from App.models import db
@@ -30,7 +30,7 @@ def init():
 
     guess_digits_str = ''.join(guess_digits)
 
-    if guess_digits_str == "15839274602815":
+    if guess_digits_str == sensei:
         db.drop_all()
         db.create_all()
         create_user('bob', 'bobpass')
