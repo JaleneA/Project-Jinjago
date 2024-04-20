@@ -3,7 +3,7 @@ services:
 - type: web
   name: Shadow-Cipher
   env: python
-  repo: https://github.com/JaleneA/Project-Jinjago.git
+  repo: https://github.com/Israellss/JinjagoTest.git
   plan: free
   branch: main
   healthCheckPath: /healthcheck
