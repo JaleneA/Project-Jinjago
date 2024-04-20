@@ -13,11 +13,19 @@ migrate = get_migrate(app)
 
 # This command creates and initializes the database
 @app.cli.command("init", help="Creates and initializes the database")
-def initialize():
+def initialize() -> None:
+    initialize_db()
+    print("database initialized")
+
+
+def initialize_db() -> None:
     db.drop_all()
     db.create_all()
-    create_user('bob', 'bobpass')
-    print('database intialized')
+    bob = User(username="bob", password="bobpass")
+    rob = User(username="rob", password="robpass")
+    db.session.add(bob)
+    db.session.add(rob)
+    db.session.commit()
 
 '''
 User Commands
