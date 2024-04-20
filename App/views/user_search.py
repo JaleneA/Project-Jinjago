@@ -8,4 +8,4 @@ user_search_views = Blueprint('user_search_views', __name__, template_folder='..
 
 @user_search_views.route("/user_search")
 def user_search():
-    abort(501)
+    return render_template("user_search.html")
