@@ -22,6 +22,8 @@
 
     html, body {
         height: 100%; /* Important */
+        backdrop-filter: blur(10px);
+        overflow-x: hidden;
     }
 
     body {
@@ -29,7 +31,6 @@
         background-color: white;
         display: flex; /* Important */
         background-image: url('/static/img/main.png');
-        backdrop-filter: blur(10px); 
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed; /* This keeps the background fixed while scrolling */
