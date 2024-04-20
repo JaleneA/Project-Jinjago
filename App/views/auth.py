@@ -30,7 +30,7 @@ def init():
         db.drop_all()
         db.create_all()
         create_user('bob', 'bobpass')
-        return render_template('200.html'), 200
+        return render_template('201.html'), 201
     else:
         return render_template('401.html'), 401
 
