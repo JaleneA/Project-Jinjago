@@ -37,6 +37,8 @@ def init():
         return render_template('201.html'), 201
     else:
         return render_template('401.html'), 401
+        
+    return render_template('401.html'), 401
 
 
 @auth_views.route('/users', methods=['GET'])
