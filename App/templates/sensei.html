@@ -22,9 +22,9 @@
                 <br>
             </div>
             <form action="/init" method="GET">
-                <div style="display: flex;">
-                    {% for i in range(4) %}
-                        <input type="text" id="guess-digit-{{ i }}" name="guess-digit-{{ i }}" maxlength="1" style="color: white; margin: 0 5px; flex: 1; border-radius: 3px; padding: 6px; font-size: 25px; text-align: center; border: 2px solid #AF9E89;">
+                <div style="display: grid; grid-template-columns: repeat(7, 1fr);">
+                    {% for i in range(14) %}
+                    <input type="text" id="{{ i }}" name="{{ i }}" maxlength="1" style="color: white; border-radius: 3px; font-size: 25px; text-align: center; border: 2px solid #AF9E89;">
                     {% endfor %}
                 </div>
                 <div class="card-action" style="display: flex; justify-content: center;">

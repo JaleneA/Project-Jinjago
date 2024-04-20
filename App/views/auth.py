@@ -1,3 +1,5 @@
+# import os
+# sensei = os.environ.get('SENSEI')
 from flask import Blueprint, render_template, jsonify, request, flash, send_from_directory, flash, redirect, url_for
 from flask_jwt_extended import jwt_required, current_user, unset_jwt_cookies, set_access_cookies
 from App.models import db
@@ -22,17 +24,20 @@ Page/Action Routes
 def init():
     guess_digits = []
 
-    for i in range(4):
-        guess_digit = request.args.get(f'guess-digit-{i}')
+    for i in range(14):
+        guess_digit = request.args.get(str(i))
         guess_digits.append(guess_digit)
 
-    if guess_digits == ["1", "2", "3", "4"]:
+    guess_digits_str = ''.join(guess_digits)
+
+    if guess_digits_str == "15839274602815":
         db.drop_all()
         db.create_all()
         create_user('bob', 'bobpass')
         return render_template('201.html'), 201
     else:
         return render_template('401.html'), 401
+
 
 @auth_views.route('/users', methods=['GET'])
 def get_user_page():
