@@ -7,11 +7,19 @@
 {% block content %}
 
   <style>
-      @media only screen and (max-width: 600px) {
+      @media only screen and (max-width: 768px) {
 
       .home-card {
           border-width: 20px; /* Adjust border width for mobile screens */
+
       }
+
+      body {
+        background-image: url('/static/img/small_main.png') !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+      }
+
       }
 
       *{

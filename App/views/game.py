@@ -94,3 +94,18 @@ def evaluateGuess():
         return jsonify({"error": "Failed To Submit Guess."}), 400
 
     return redirect(request.referrer)
+
+from flask import render_template_string, Markup
+
+@game_views.route('/help_me', methods=['GET'])
+@jwt_required()
+def helpMe():
+    tooltip = "Click Here To Go To How To Play Page"
+    howtoplay_route = "/howtoplay"
+    flash_message = ('<br>Bull - Correct<br>'
+                     'Cow - Correct, But...<br>'
+                     'Milk - Wrong<br>'
+                     f'<a href="{howtoplay_route}" title="{tooltip}" style="color: #CD6240">Need More?</a>')
+    flash(Markup(flash_message))
+    return redirect(request.referrer)
+
