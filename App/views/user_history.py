@@ -23,6 +23,7 @@ def user_history(user_id, game_id):
     user_guesses = UserGuess.query.filter_by(user_id=user.id).all()
     game_ids = {user_guess.game_id for user_guess in user_guesses}
     games = Game.query.filter(Game.id.in_(game_ids)).all()
+    result = document_result(Game.max_attempts, user_guesses)
     
     user_games = [
         {
@@ -32,7 +33,8 @@ def user_history(user_id, game_id):
             "answer_length" : game.answer_length,
             "max_attempts" : game.max_attempts,
             "labeled_guesses" : [game.attachLabels(user_guess.guess, game.answer) for user_guess in user_guesses if user_guess.game_id == game.id],
-            "num_guesses" : sum(1 for user_guess in user_guesses if user_guess.game_id == game.id)
+            "num_guesses" : sum(1 for user_guess in user_guesses if user_guess.game_id == game.id),
+            "result": document_result(game.max_attempts, user_guesses) if result == "-" else result
         }
         for game in games
     ]
@@ -43,3 +45,11 @@ def user_history(user_id, game_id):
                         user_games=user_games,
                         num_games=len(user_games),
                         selected_game = selected_game)
+
+def document_result(max_attempts, labeled_guesses):
+    if len(labeled_guesses) == max_attempts and labeled_guess.count('Bull') == 4:
+        return "Victory"
+        
+    if len(labeled_guesses) == max_attempts:
+        return "Defeat"
+    return "-"

@@ -60,6 +60,7 @@
               <th>No. Digits</th>
               <th>Max Attempts</th>
               <th>No. Guesses</th>
+              <th>Result</th>
               <th>Guesses</th>
             </tr>
           </thead>
@@ -70,6 +71,7 @@
               <td>{{ game.answer_length }}</td>
               <td>{{ game.max_attempts }}</td>
               <td>{{ game.num_guesses }}</td>
+              <td>{{ game.result }}</td>
               <td><a class="waves-effect waves-light btn" href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}">View Details</a></td>
             </tr>
             {% endfor %}
