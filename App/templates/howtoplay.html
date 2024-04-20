@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{% block title %}How To Play - ShadowCipher{% endblock %}
+{% block page %}How To Play - ShadowCipher{% endblock %}
+
+{% block content %}
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    @font-face {
+        font-family: my-font-heading;
+        src: url(/static/custom_fonts/Japanese.ttf);
+    }
+    
+    @font-face {
+        font-family: my-font;
+        src: url(/static/custom_fonts/Museo700-Regular.otf);
+    }
+
+    html, body {
+        height: 100%; /* Important */
+    }
+
+    body {
+        margin: 0;
+        background-color: white;
+        display: flex; /* Important */
+        background-image: url('/static/img/main.png');
+        backdrop-filter: blur(10px); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* This keeps the background fixed while scrolling */
+    }
+
+    .how-to-play {
+        width: 65%;
+        background: #262627;
+        border-radius: 3px;
+        text-align: center;
+        padding: 10px 10px 10px 10px;
+        color: #333;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        margin-top: 5px !important; /* Important */
+        margin: auto;
+    }
+
+
+    .how-to-play h1 {
+        border: 1px solid rgb(164, 163, 159);
+        border-radius: 5px;
+        background-color: #9e2a34;
+        color: rgb(189, 182, 154);
+        font-family: my-font-heading;
+    }
+
+    .instructions-container{
+        width: calc(100% + 20px); 
+        margin: 0 -10px; 
+        display: flex;
+        flex-wrap: wrap; 
+        
+    }
+
+    .instructions-column{
+        flex: 1; 
+        background-color: rgb(220, 207, 168);
+        border-radius: 10px; 
+        margin: 0 10px 20px; 
+        padding: 20px; 
+        text-align: center; 
+    }
+
+    .instructions-column img{
+        max-width: 80%; 
+        display: block; 
+        margin: 0 auto 20px; 
+        border-radius: 10px; 
+    }
+
+    .instructions-column p{
+        font-size: 13.5px;
+        font-family: my-font;
+    }
+
+    .instructions-column h2{
+        font-size: 20px;
+        font-family: my-font;
+        margin-bottom: 10px;
+    }
+
+</style>
+<body>
+    <div class="how-to-play-container">
+        <div class="how-to-play">
+                <h1>How To Play</h1>
+            <div class="instructions-container">
+                
+                <div class="instructions-column">
+                    <img src="/static/img/img.jpg" alt="placeholder1">
+                    <h2>| 1 |</h2>
+                    <p> Your challenge in Bulls and Cows is to unlock the secret number 
+                        chosen by your opponent. Can you crack the code?</p>
+                </div>
+
+                <div class="instructions-column">
+                    <img src="/static/img/img.jpg" alt="placeholder2">
+                    <h2>| 2 |</h2>
+                    <p> Pay attention to the clues - "bulls" mean you've got a digit in the right place, 
+                        while "cows" mean you've got the right digit but in the wrong place</p>
+                </div>
+
+                <div class="instructions-column">
+                    <img src="/static/img/img.jpg" alt="placeholder3">
+                    <h2>| 3 |</h2>
+                    <p> With each guess, use the feedback to refine your strategy and get 
+                        closer to victory. Keep guessing and analyzing until you've cracked the code!</p>
+                </div>
+            </div>
+            <div style="font-family: my-font;">
+                <a href="/" style="color: rgb(189, 182, 154); font-size: 1.1em;">Back To Main Screen</a>
+            </div>
+        </div>
+    </div>    
+</body>
+{% endblock %}

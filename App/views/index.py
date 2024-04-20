@@ -8,6 +8,10 @@ index_views = Blueprint('index_views', __name__, template_folder='../templates')
 def index_page():
     return render_template('index.html')
 
+@index_views.route('/sensei', methods=['GET'])
+def admin():
+    return render_template('sensei.html')
+
 # Moved From login.py view
 @index_views.route('/login_page', methods=['GET'])
 def login_page():
@@ -17,13 +21,6 @@ def login_page():
 @index_views.route('/signup_page', methods=['GET'])
 def signup_page():
     return render_template('signup.html')
-
-@index_views.route('/init', methods=['GET'])
-def init():
-    db.drop_all()
-    db.create_all()
-    create_user('bob', 'bobpass')
-    return jsonify(message='db initialized!')
 
 @index_views.route('/healthcheck', methods=['GET'])
 def health_check():
