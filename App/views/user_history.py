@@ -47,9 +47,16 @@ def user_history(user_id, game_id):
                         selected_game = selected_game)
 
 def document_result(max_attempts, labeled_guesses):
-    if len(labeled_guesses) == max_attempts and labeled_guess.count('Bull') == 4:
+    bull_count = 0
+    
+    for labeled_guess in labeled_guesses:
+        if labeled_guess == 'Bull':
+            bull_count += 1
+    
+    if bull_count == 4:
         return "Victory"
-        
+    
     if len(labeled_guesses) == max_attempts:
         return "Defeat"
+    
     return "-"
