@@ -8,16 +8,17 @@
         <div class="nav-wrapper" style="background-color: #232021; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid white;">
             <a href="/" style="display: flex; align-items: center;">
                 <img src="/static/img/logo.png" style="width: 10%; margin-left: 10px;">
-                <span style="font-size: 1.5em; padding-left: 10px; width: 100%;">ShadowCipher</span>
+                <span style="font-size: 1.5em; padding-left: 10px; width: 100%;">Greetings {{current_user.username}}!</span>
             </a>
-            <div>
-                <a href="/user_history/{{current_user.id}}">
-                    <p style="font-size: 1em;">Logged in as: {{current_user.username}}</p>
+            <ul id="nav-mobile" style="border-left: solid 2px white; border-right: solid 2px white;">
+                <a style="display: flex;" href="/user_history/{{current_user.id}}">
+                    <li style="font-size: 1em; border-radius: 5px;">See Stats</li>
                 </a>
-            </div>
+            </ul>
             <div>
                 <ul id="nav-mobile" class="right">
-                    <li><a href="/help_me">Confused?</a></li>
+                    <li></li>
+                    <li><a style="border-right: solid 2px white; border-left: solid 2px white;" href="/help_me">Confused?</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>

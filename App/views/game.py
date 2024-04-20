@@ -36,9 +36,9 @@ def game():
     # Checking if the player has achieved victory!
     victory = None
     if verdict and verdict['bulls'] == 4:
-        victory = "Congratulations! You Did It!"
+        victory = "Congratulations! You've Obtained Victory!"
     elif (attempts_left == 0):
-        victory = "You Lose!"
+        victory = "You Have Lost. Chin Up And Return Tomorrow!"
 
     # Attaching labels to each digit in the guesses
     # Probably whomp logic but I tried :~)
@@ -104,9 +104,9 @@ from flask import render_template_string, Markup
 def helpMe():
     tooltip = "Click Here To Go To How To Play Page"
     howtoplay_route = "/howtoplay"
-    flash_message = ('<br>Bull - Correct<br>'
-                     'Cow - Correct, But...<br>'
-                     'Milk - Wrong<br>'
+    flash_message = ('<br>Shuriken - Correct<br>'
+                     'Kunai - Correct, But...<br>'
+                     'Smoke - Wrong<br>'
                      f'<a href="{howtoplay_route}" title="{tooltip}" style="color: #CD6240">Need More?</a>')
     flash(Markup(flash_message))
     return redirect(request.referrer)
