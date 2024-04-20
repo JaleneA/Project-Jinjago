@@ -26,18 +26,21 @@ def init():
 
     for i in range(14):
         guess_digit = request.args.get(str(i))
-        guess_digits.append(guess_digit)
+        if guess_digit is not None:
+            guess_digits.append(guess_digit)
 
-    guess_digits_str = ''.join(guess_digits)
+    if guess_digits:
+        guess_digits_str = ''.join(guess_digits)
 
-    if guess_digits_str == sensei:
-        db.drop_all()
-        db.create_all()
-        create_user('bob', 'bobpass')
-        return render_template('201.html'), 201
+        if guess_digits_str == sensei:
+            db.drop_all()
+            db.create_all()
+            create_user('bob', 'bobpass')
+            return render_template('201.html'), 201
+        else:
+            return render_template('401.html'), 401
     else:
         return render_template('401.html'), 401
-
 
 @auth_views.route('/users', methods=['GET'])
 def get_user_page():
