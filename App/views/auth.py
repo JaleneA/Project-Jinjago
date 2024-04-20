@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, jsonify, request, flash, send_from_directory, flash, redirect, url_for
 from flask_jwt_extended import jwt_required, current_user, unset_jwt_cookies, set_access_cookies
+from App.models import db
+from App.controllers import create_user
 
 from.index import index_views
 from .game import game_views
@@ -14,7 +16,24 @@ auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
 
 '''
 Page/Action Routes
-'''    
+'''
+
+@auth_views.route('/init', methods=['GET'])
+def init():
+    guess_digits = []
+
+    for i in range(4):
+        guess_digit = request.args.get(f'guess-digit-{i}')
+        guess_digits.append(guess_digit)
+
+    if guess_digits == ["1", "2", "3", "4"]:
+        db.drop_all()
+        db.create_all()
+        create_user('bob', 'bobpass')
+        return render_template('200.html'), 200
+    else:
+        return render_template('401.html'), 401
+
 @auth_views.route('/users', methods=['GET'])
 def get_user_page():
     users = get_all_users()

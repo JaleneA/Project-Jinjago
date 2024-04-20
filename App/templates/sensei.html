@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Sensi - ShadowCipher{% endblock %}
+{% block page %}Sensi - ShadowCipher{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+<div class="container">
+    <div class="row" style="margin-top: 10%;">
+        <div class="col s12 m10 offset-m1">
+            <div class="card-content">
+                <h1>Admin - Initialization</h1>
+                <p>Welcome Sensei</p>
+                <form action="/init" method="GET">
+                    <div style="display: flex;">
+                        {% for i in range(4) %}
+                            <input type="text" id="guess-digit-{{ i }}" name="guess-digit-{{ i }}" maxlength="1" style="margin: 0 5px; flex: 1; border-radius: 3px; padding: 6px; font-size: 25px; text-align: center; border: 2px solid #AF9E89;">
+                        {% endfor %}
+                    </div>
+                    <div class="card-action" style="display: flex; justify-content: center;">
+                        <button class="white-text btn" type="submit" style="background-color: #CD6240; border-radius: 20px; font-size: 1.2em;">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
