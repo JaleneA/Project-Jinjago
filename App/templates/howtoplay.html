@@ -80,6 +80,20 @@
         border-radius: 10px; 
     }
 
+    /* https://stackoverflow.com/questions/19104018/how-to-expand-an-image-in-html-by-clicking-on-it */
+    .instructions-column img:hover{
+        color: #424242; 
+        -webkit-transition: all .5s ease-in-out;
+        -moz-transition: all .5s ease-in-out;
+        -ms-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        opacity: 1;
+        transform: scale(5);
+        -ms-transform: scale(5); /* IE 9 */
+        -webkit-transform: scale(5); /* Safari and Chrome */
+    }
+
     .instructions-column p{
         font-size: 13.5px;
         font-family: my-font;
@@ -95,42 +109,63 @@
 <body>
     <div class="how-to-play-container">
         <div class="how-to-play">
-                <h1>How To Play</h1>
+            <h1>How To Play</h1>
             <div class="instructions-container">
-                <div class="instructions-container">
-                    <div class="instructions-column">
-                        <img src="/static/img/img.jpg" alt="placeholder1">
-                        <h2>| 1 |</h2>
-                        <p>Welcome to ShadowCipher! You goal is to decode the a secret number chosen by your opponent
-                            within a limited number of guesses. Can you crack the code?</p>
-                    </div>
-    
-                    <div class="instructions-column">
-                        <img src="/static/img/img.jpg" alt="placeholder2">
-                        <h2>| 2 |</h2>
-                        <p> To make a guess, enter a digit from 0-9 into each available slot, then press 'SUMBIT'.
-                            Repeat digits (i.e., multiple instances of the same digit) are not allowed, and the first digit cannot be zero (0).</p>
-                    </div>
-    
-                    <div class="instructions-column">
-                        <img src="/static/img/img.jpg" alt="placeholder2">
-                        <h2>| 3 |</h2>
-                        <p> After each guess, you will recieve a series of clues:<br>
-                            <ul>
-                                <li>Bulls: The guessed digit is correct.</li>
-                                <li>Cows: The digit is present in the code, but belongs in a different position.</li>
-                                <li>Milk: The digit is not present in the code.</li>
-                            </ul>
-                        </p>
-                    </div>
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_welcome-to-shadowcipher.jpeg" alt="Image of the game page at the start of a new game.">
+                    <h2>| 1 |</h2>
+                    <p>
+                        Welcome to ShadowCipher!<br><br>
+                        You goal is to decode the a secret number chosen by your opponent within a limited number of guesses.<br><br>
+                        Can you crack the code?
+                    </p>
                 </div>
-                <div class="instructions-container">
-                    <div class="instructions-column">
-                        <img src="/static/img/img.jpg" alt="placeholder3">
-                        <h2>| 4 |</h2>
-                        <p> With each guess, use the feedback to refine your strategy and get 
-                            closer to victory. Keep guessing and analyzing until you've cracked the code!</p>
-                    </div>
+
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_make-a-guess.jpeg" alt="Image of the game page as a guess is being made.">
+                    <h2>| 2 |</h2>
+                    <p>
+                        To make a guess, enter a digit from 0-9 into each available slot, then press 'SUMBIT'.<br><br>
+                        Repeat digits (i.e., multiple instances of the same digit) are not allowed, and the first digit cannot be zero (0).
+                    </p>
+                </div>
+
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_guess-feedback-1.jpeg" alt="Image of the game page after one (1) guess has been made.">
+                    <h2>| 3 |</h2>
+                    <p>
+                        After each guess, clues are given in the form of three (3) distinct values:<br><br>
+                        Shuriken: The number of correct digits that are in the correct position.<br><br>
+                        Kunai: The number of correct digits that belong in another position.<br><br>
+                        Smoke: The number of wholly incorrect digits.
+                    </p>
+                </div>
+            </div>
+            <div class="instructions-container">
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_guess-feedback-2.jpeg" alt="Image of the game page after a second guess has been made.">
+                    <h2>| 4 |</h2>
+                    <p>
+                        Additional information is given by the colour of of the box surrounding each digit of your previous guess.<br><br>
+                        Green: The digit has a 'Shuriken' value.<br><br>
+                        Yellow: The digit has a 'Kunai' value.<br><br>
+                        Brown: The digit has a 'Smoke' value.<br><br>
+                </div>
+
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_guess-feedback-3.jpeg" alt="Image of the game page after multiple guesses have been made.">
+                    <h2>| 5 |</h2>
+                    <p>
+                        With each guess, use the feedback to refine your strategy and get closer to victory.
+                    </p>
+                </div>
+
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_victory.jpeg" alt="Image of the game page after winning the game.">
+                    <h2>| 6 |</h2>
+                    <p>
+                         Keep guessing and analyzing until you've cracked the code!
+                    </p>
                 </div>
             </div>
             <div style="font-family: my-font;">
