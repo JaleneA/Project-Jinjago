@@ -8,6 +8,8 @@ from App.controllers import create_user
 from.index import index_views
 from .game import game_views
 
+from App.models import User
+
 from App.controllers import (
     login,
     create_user
