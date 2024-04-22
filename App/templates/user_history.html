@@ -11,7 +11,7 @@
       <a href="#" style="font-size: 1.5em; margin-left: 10px" class="brand-logo left">{{ user.username }}'s Game History</a>
       <div>
         <ul id="nav-mobile" class="right">
-            <li><a style="border-right: solid 2px white; border-left: solid 2px white; padding-left: 30px; padding-right: 30px;" href="javascript:history.back()">Back</a></li>
+<!--             <li><a style="border-right: solid 2px white; border-left: solid 2px white; padding-left: 30px; padding-right: 30px;" href="javascript:history.back()">Back</a></li> -->
             <li><a href="/logout">Logout</a></li>
         </ul>
       </div>
@@ -68,7 +68,7 @@
               <td>{{ game.answer_length }}</td>
               <td>{{ game.max_attempts }}</td>
               <td>{{ game.num_guesses }}</td>
-              <td><a class="white-text btn" style="background-color: #CD6240;" href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}">View Details</a></td>
+<!--               <td><a class="white-text btn" style="background-color: #CD6240;" href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}">View Details</a></td> -->
             </tr>
             {% endfor %}
           </tbody>
