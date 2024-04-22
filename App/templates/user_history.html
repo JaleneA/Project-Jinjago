@@ -68,7 +68,7 @@
               <td>{{ game.answer_length }}</td>
               <td>{{ game.max_attempts }}</td>
               <td>{{ game.num_guesses }}</td>
-              <td><a class="white-text btn" style="background-color: #CD6240;" href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}">View Details</a></td>
+              <td><a class="white-text btn" style="background-color: #CD6240;" href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}" disabled>View Details</a></td>
             </tr>
             {% endfor %}
           </tbody>
