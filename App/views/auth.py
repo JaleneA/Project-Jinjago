@@ -72,7 +72,7 @@ def login_action():
 
 @auth_views.route('/logout', methods=['GET'])
 def logout_action():
-    response = redirect(url_for('index_views.index_page')) 
+    response = redirect(url_for('index_views.login_page')) 
     flash("Logged Out Successfully!")
     unset_jwt_cookies(response)
     return response
