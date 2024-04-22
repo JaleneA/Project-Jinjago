@@ -62,7 +62,7 @@ def login_action():
     token = login(username, password)
     if token == None:
         flash('Bad Username Or Password Given'), 401
-        response = redirect(url_for('index_views.login_page'))
+        response = redirect(url_for('index_views.index_page'))
         return response
     else:
         flash('Login Successful!')
