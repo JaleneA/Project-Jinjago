@@ -17,8 +17,8 @@ class Game(db.Model):
 
     # Note: Answer must be stored as a string instead of an int to preserve any leading zeroes
     answer = db.Column(db.String(MAX_CODE_LENGTH), db.CheckConstraint(
-        f"answer >= {MIN_CODE_VALUE} AND answer <= {MAX_CODE_VALUE} AND LENGTH(answer) >= {MIN_CODE_LENGTH} AND LENGTH(answer) <= {MAX_CODE_LENGTH}"),
-        nullable=False)
+    f"CAST(answer AS INTEGER) >= {MIN_CODE_VALUE} AND CAST(answer AS INTEGER) <= {MAX_CODE_VALUE} AND LENGTH(answer) >= {MIN_CODE_LENGTH} AND LENGTH(answer) <= {MAX_CODE_LENGTH}"),
+    nullable=False)
 
     guesses = db.relationship('UserGuess', back_populates='game_relation', cascade="all, delete-orphan")
 
